@@ -14,12 +14,16 @@ import numpy as np
 
 epoch = 'epoch_48'
 
-cfg = Config.fromfile('./configs/_base_/younghoon.py)
+
+cfg = Config.fromfile('./configs/_base_/younghoon.py')
+
+cfg.data.test.test_mode = True
+
 cfg.seed=2021
 cfg.gpu_ids = [1]
 cfg.work_dir = './work_dirs/younghoon'
 cfg.model.train_cfg = None
-dataset = build_datset(cfg.data.test)
+dataset = build_dataset(cfg.data.test)
 data_loader = build_dataloader(
     dataset,
     samples_per_gpu=1,
