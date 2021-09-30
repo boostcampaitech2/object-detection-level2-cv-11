@@ -177,7 +177,7 @@ lr_config = dict(
     step=[8, 11])
 runner = dict(type='EpochBasedRunner', max_epochs=48)
 
-work_dir = '/opt/ml/detection/mmdetection/work_dirs/younghoon'
+work_dir = '/opt/ml/detection/mmdetection/work_dirs/younghoon2'
 
 checkpoint_config = dict(max_keep_ckpts=3, interval=4)
 # yapf:disable
@@ -195,3 +195,4 @@ log_level = 'INFO'
 # load_from = None
 resume_from = None
 workflow = [('train', 1)]
+
