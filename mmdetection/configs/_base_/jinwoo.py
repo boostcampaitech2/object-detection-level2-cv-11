@@ -257,6 +257,8 @@ log_config = dict(
     interval=50,
     hooks=[
         dict(type='TextLoggerHook'),
+        dict(type='WandbLoggerHook',
+            init_kwargs=dict(project='junshick', entity='carry-van'))
         # dict(type='TensorboardLoggerHook')
     ])
 # yapf:enable

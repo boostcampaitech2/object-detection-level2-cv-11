@@ -37,7 +37,7 @@ data = dict(
     train=dict(
         classes= CLASSES,
         type=dataset_type,
-        ann_file=data_root + 'train.json',
+        ann_file=data_root + 'train_fold1.json',
         img_prefix=data_root ,
         pipeline=train_pipeline),
     val=dict(
@@ -185,7 +185,8 @@ log_config = dict(
     interval=50,
     hooks=[
         dict(type='TextLoggerHook'),
-        # dict(type='TensorboardLoggerHook')
+        dict(type='WandbLoggerHook',
+            init_kwargs=dict(project='junshick', entity='carry-van'))
     ])
 # yapf:enable
 custom_hooks = [dict(type='NumClassCheckHook')]
