@@ -78,7 +78,7 @@ model = dict(
         feat_channels=256,
         anchor_generator=dict(
             type='AnchorGenerator',
-            scales=[4],
+            scales=[4, 6, 8],
             ratios=[0.5, 1.0, 2.0],
             strides=[4, 8, 16, 32, 64]),
         bbox_coder=dict(
@@ -156,7 +156,7 @@ model = dict(
             nms=dict(type='nms', iou_threshold=0.7),
             min_bbox_size=0),
         rcnn=dict(
-            score_thr=0.05,
+            score_thr=0.00,
             nms=dict(type='nms', iou_threshold=0.5),
             max_per_img=100)
         # soft-nms is also supported for rcnn testing
@@ -177,7 +177,7 @@ lr_config = dict(
     step=[8, 11])
 runner = dict(type='EpochBasedRunner', max_epochs=48)
 
-work_dir = '/opt/ml/detection/mmdetection/work_dirs/younghoon2'
+work_dir = '/opt/ml/detection/mmdetection/work_dirs/younghoon5'
 
 checkpoint_config = dict(max_keep_ckpts=3, interval=4)
 # yapf:disable
