@@ -8,7 +8,7 @@ def main(args):
     model_path = args.model_dir
     ensemble_list = os.listdir(model_path)
     models = [pd.read_csv(os.path.join(model_path, _)) for _ in ensemble_list]
-
+    print(ensemble_list)
     if args.weights != None and len(args.weights) != len(models):
         raise NameError('not match number of model and weights')
     
@@ -54,7 +54,7 @@ def main(args):
     submission = pd.DataFrame()
     submission['PredictionString'] = predictionstring
     submission['image_id'] = file_names
-    submission.to_csv(os.path.join(args.save_dir, f'{file_name}.csv'), index=None)
+    submission.to_csv(os.path.join(args.save_dir, f'{file_name}_{args.iou_thr}.csv'), index=None)
     print("done!")
 
 if __name__ == "__main__":
