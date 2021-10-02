@@ -4,3 +4,5 @@ dataset/
 faster_rcnn/
 .vscode/
 .wandb
+ensemble/
+models/
