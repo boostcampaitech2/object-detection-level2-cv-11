@@ -10,5 +10,5 @@ lr_config = dict(
     step=[8, 11])
 runner = dict(type='EpochBasedRunner', max_epochs=48)
 
-work_dir = '/opt/ml/detection/mmdetection/work_dirs/swin/2'
+work_dir = '/opt/ml/detection/mmdetection/work_dirs/swin/3'
 

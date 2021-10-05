@@ -5,7 +5,7 @@ _base_ = [
     'default_runtime.py'
 ]
 
-pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth'  # noqa
+pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_small_patch4_window7_224.pth'  # noqa
 
 model = dict(
     type='MaskRCNN',
@@ -13,7 +13,7 @@ model = dict(
         _delete_=True,
         type='SwinTransformer',
         embed_dims=96,
-        depths=[2, 2, 6, 2],
+        depths=[2, 2, 18, 2],
         num_heads=[3, 6, 12, 24],
         window_size=7,
         mlp_ratio=4,
@@ -81,7 +81,7 @@ fp16 = dict(loss_scale=dict(init_scale=512))
 optimizer = dict(
     _delete_=True,
     type='AdamW',
-    lr=0.0001,
+    lr=0.00005,
     betas=(0.9, 0.999),
     weight_decay=0.05,
     paramwise_cfg=dict(
@@ -90,7 +90,7 @@ optimizer = dict(
             'relative_position_bias_table': dict(decay_mult=0.),
             'norm': dict(decay_mult=0.)
         }))
-lr_config = dict(warmup_iters=1000, step=[27, 33])
-runner = dict(max_epochs=36)
+lr_config = dict(warmup_iters=1000, step=[66, 69])
+runner = dict(max_epochs=72)
 
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/swin/mask_rcnn_swin-s-p4-w7_fpn_fp16_ms-crop-3x_coco/mask_rcnn_swin-s-p4-w7_fpn_fp16_ms-crop-3x_coco_20210903_104808-b92c91f1.pth'

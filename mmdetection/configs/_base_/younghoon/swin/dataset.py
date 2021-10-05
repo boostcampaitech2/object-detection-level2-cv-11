@@ -51,4 +51,4 @@ data = dict(
         ann_file=data_root + 'test.json',
         img_prefix=data_root,
         pipeline=test_pipeline))
-evaluation = dict(interval=12, metric='bbox')
+evaluation = dict(interval=36, metric='bbox')
