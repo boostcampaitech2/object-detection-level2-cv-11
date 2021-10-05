@@ -14,7 +14,7 @@ from pycocotools.coco import COCO
 import numpy as np
 
 def main(args):
-    cfg = Config.fromfile('./configs/_base_/{}.py'.format(args.config_dir))
+    cfg = Config.fromfile('./{}'.format(args.config_dir))
 
     epoch = args.epoch
 
@@ -58,7 +58,7 @@ def main(args):
             
         prediction_strings.append(prediction_string)
         file_names.append(image_info['file_name'])
-
+    
 
     submission = pd.DataFrame()
     submission['PredictionString'] = prediction_strings

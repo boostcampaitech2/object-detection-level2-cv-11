@@ -31,12 +31,12 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=4,
+    samples_per_gpu=8,
     workers_per_gpu=4,
     train=dict(
         classes= CLASSES,
         type=dataset_type,
-        ann_file=data_root + 'new_train.json',
+        ann_file=data_root + 'train.json',
         img_prefix=data_root,
         pipeline=train_pipeline),
     val=dict(
@@ -51,4 +51,4 @@ data = dict(
         ann_file=data_root + 'test.json',
         img_prefix=data_root,
         pipeline=test_pipeline))
-evaluation = dict(interval=12, metric='bbox')
+evaluation = dict(interval=36, metric='bbox', save_best='bbox_mAP_50')

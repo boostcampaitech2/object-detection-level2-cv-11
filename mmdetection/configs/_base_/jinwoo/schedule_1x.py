@@ -7,8 +7,8 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=500,
     warmup_ratio=0.001,
-    step=[8, 11])
-runner = dict(type='EpochBasedRunner', max_epochs=48)
+    step=[27, 33])
+runner = dict(type='EpochBasedRunner', max_epochs=36)
 
-work_dir = '/opt/ml/detection/mmdetection/work_dirs/jinwoo/swin3'
+work_dir = '/opt/ml/detection/mmdetection/work_dirs/jinwoo/cascade_rcnn3_21'
 
