@@ -81,7 +81,7 @@ fp16 = dict(loss_scale=dict(init_scale=512))
 optimizer = dict(
     _delete_=True,
     type='AdamW',
-    lr=0.00005,
+    lr=0.0000375,
     betas=(0.9, 0.999),
     weight_decay=0.05,
     paramwise_cfg=dict(
@@ -90,7 +90,7 @@ optimizer = dict(
             'relative_position_bias_table': dict(decay_mult=0.),
             'norm': dict(decay_mult=0.)
         }))
-lr_config = dict(warmup_iters=1000, step=[66, 69])
-runner = dict(max_epochs=72)
+lr_config = dict(warmup_iters=1000, step=[84, 87])
+runner = dict(max_epochs=90)
 
 load_from = 'https://download.openmmlab.com/mmdetection/v2.0/swin/mask_rcnn_swin-s-p4-w7_fpn_fp16_ms-crop-3x_coco/mask_rcnn_swin-s-p4-w7_fpn_fp16_ms-crop-3x_coco_20210903_104808-b92c91f1.pth'

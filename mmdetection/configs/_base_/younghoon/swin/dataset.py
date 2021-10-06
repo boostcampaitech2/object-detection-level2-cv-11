@@ -31,7 +31,7 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=8,
+    samples_per_gpu=6,
     workers_per_gpu=4,
     train=dict(
         classes= CLASSES,
@@ -51,4 +51,4 @@ data = dict(
         ann_file=data_root + 'test.json',
         img_prefix=data_root,
         pipeline=test_pipeline))
-evaluation = dict(interval=36, metric='bbox')
+evaluation = dict(interval=10, metric='bbox')
