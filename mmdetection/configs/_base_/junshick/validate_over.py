@@ -37,7 +37,7 @@ data = dict(
     train=dict(
         classes= CLASSES,
         type=dataset_type,
-        ann_file=data_root + 'train_fold1.json',
+        ann_file=data_root + 'extract_json/train_under3.json',
         img_prefix=data_root ,
         pipeline=train_pipeline),
     val=dict(
@@ -49,7 +49,7 @@ data = dict(
     test=dict(
         classes= CLASSES,
         type=dataset_type,
-        ann_file=data_root + 'val_fold1.json',
+        ann_file='/opt/ml/detection/dataset/test_result_from_detector/to_model_1.json',
         img_prefix=data_root ,
         pipeline=test_pipeline))
 evaluation = dict(interval=4, metric='bbox')
@@ -79,7 +79,7 @@ model = dict(
         feat_channels=256,
         anchor_generator=dict(
             type='AnchorGenerator',
-            scales=[1],
+            scales=[9],
             ratios=[0.5, 1.0, 2.0],
             strides=[4, 8, 16, 32, 64]),
         bbox_coder=dict(
@@ -132,7 +132,7 @@ model = dict(
         rpn_proposal=dict(
             nms_pre=2000,
             max_per_img=1000,
-            nms=dict(type='nms', iou_threshold=0.7),
+            nms=dict(type='nms', iou_threshold=0.5),
             min_bbox_size=0),
         rcnn=dict(
             assigner=dict(
@@ -152,12 +152,12 @@ model = dict(
             debug=False)),
     test_cfg=dict(
         rpn=dict(
-            nms_pre=1000,
-            max_per_img=1000,
+            nms_pre=1000, #bbox num before nms
+            max_per_img=1000, #
             nms=dict(type='nms', iou_threshold=0.7),
             min_bbox_size=0),
         rcnn=dict(
-            score_thr=0.4,
+            score_thr=0.3,
             nms=dict(type='nms', iou_threshold=0.5),
             max_per_img=100)
         # soft-nms is also supported for rcnn testing
@@ -176,9 +176,9 @@ lr_config = dict(
     warmup_iters=500,
     warmup_ratio=0.001,
     step=[8, 11])
-runner = dict(type='EpochBasedRunner', max_epochs=48)
+runner = dict(type='EpochBasedRunner', max_epochs=24)
 
-work_dir = '/opt/ml/detection/mmdetection/work_dirs/junshick'
+work_dir = '/opt/ml/detection/mmdetection/work_dirs/junshick/validate_over'
 
 checkpoint_config = dict(max_keep_ckpts=3, interval=4)
 # yapf:disable
@@ -186,8 +186,8 @@ log_config = dict(
     interval=50,
     hooks=[
         dict(type='TextLoggerHook'),
-        #dict(type='WandbLoggerHook',
-          #  init_kwargs=dict(project='junshick', entity='carry-van'))
+        dict(type='WandbLoggerHook',
+            init_kwargs=dict(project='junshick', entity='carry-van'))
     ])
 # yapf:enable
 custom_hooks = [dict(type='NumClassCheckHook')]
