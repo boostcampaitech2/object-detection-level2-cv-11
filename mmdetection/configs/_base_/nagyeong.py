@@ -186,7 +186,7 @@ log_config = dict(
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='WandbLoggerHook',
-            init_kwargs=dict(project='nagyeong', entity='carry-van'))
+            init_kwargs=dict(project='junshick', entity='carry-van'))
     ])
 # yapf:enable
 custom_hooks = [dict(type='NumClassCheckHook')]
