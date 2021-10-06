@@ -1,11 +1,11 @@
-checkpoint_config = dict(max_keep_ckpts=12, interval=4)
+checkpoint_config = dict(max_keep_ckpts=4, interval=4)
 # yapf:disable
 log_config = dict(
     interval=50,
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='WandbLoggerHook',
-            init_kwargs=dict(project='jinwoo', entity='carry-van', name='cascade_101_all'))
+            init_kwargs=dict(project='jinwoo', entity='carry-van', name='swin_mosaic_new'))
         # dict(type='TensorboardLoggerHook')
     ])
 # yapf:enable

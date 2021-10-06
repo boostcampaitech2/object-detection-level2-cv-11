@@ -10,5 +10,5 @@ lr_config = dict(
     step=[27, 33])
 runner = dict(type='EpochBasedRunner', max_epochs=36)
 
-work_dir = '/opt/ml/detection/mmdetection/work_dirs/jinwoo/cascade_rcnn3_21'
+work_dir = '/opt/ml/detection/mmdetection/work_dirs/jinwoo/swin10_23'
 
