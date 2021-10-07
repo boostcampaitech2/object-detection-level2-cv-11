@@ -4,6 +4,7 @@ _base_=[
     'default_runtime.py',
     'schedule_1x.py'
 ]
+''''
 pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth'  # noqa
 model = dict(
     type='MaskRCNN',
@@ -28,3 +29,4 @@ model = dict(
     neck=dict(in_channels=[96, 192, 384, 768])#neck in_channels가 바뀌어져 있따.
     #[246, 512, 1024, 2048]
 )
+'''
