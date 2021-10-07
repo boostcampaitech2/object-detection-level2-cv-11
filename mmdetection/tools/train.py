@@ -187,7 +187,16 @@ def main():
 if __name__ == '__main__':
     import requests
     import json
-
+    SLACK_BOT_TOKEN = "xoxb-2264595263921-2568321418786"
+    SLACK_BOT_TOKEN += "-oZqtj7RCzl8yuSa7S9rwozgd"
+    headers= {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + SLACK_BOT_TOKEN
+    }
+    payload = {
+        'channel' : '#carry-v-an-bot',
+        'text': None
+    }
     
     main()
     
