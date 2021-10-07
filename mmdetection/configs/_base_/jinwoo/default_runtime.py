@@ -5,7 +5,7 @@ log_config = dict(
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='WandbLoggerHook',
-            init_kwargs=dict(project='jinwoo', entity='carry-van', name='swin_mosaic_new'))
+            init_kwargs=dict(project='jinwoo', entity='carry-van', name='swin_k-fold3_rotate_scale[8,12]'))
         # dict(type='TensorboardLoggerHook')
     ])
 # yapf:enable
