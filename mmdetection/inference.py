@@ -14,11 +14,12 @@ from pycocotools.coco import COCO
 import numpy as np
 
 def main(args):
-    cfg = Config.fromfile('./{}'.format(args.config_dir))
+    cfg = Config.fromfile(args.config_dir)
 
     epoch = args.epoch
 
     cfg.data.test.test_mode = True
+    cfg.data.test.pipeline[1]['img_scale'] = (1024,1024) 
 
     cfg.seed=2021
     cfg.gpu_ids = [1]
@@ -82,6 +83,6 @@ if __name__=='__main__':
     args = parser.parse_args()
 
     if args.config_dir is None:
-        raise NameError('set config dir')
+        raise NameError('set config directory path')
     
     main(args)
