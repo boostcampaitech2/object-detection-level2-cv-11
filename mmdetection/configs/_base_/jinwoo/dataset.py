@@ -13,6 +13,17 @@ albu_train_transforms = [
         rotate_limit=0,
         interpolation=1,
         p=0.5),
+    dict(
+        type='RandomBrightnessContrast',
+        brightness_limit=[0.1, 0.3],
+        contrast_limit=[0.1, 0.3],
+        p=0.5),
+    dict(
+        type='HueSaturationValue',
+        hue_shift_limit=20,
+        sat_shift_limit=30,
+        val_shift_limit=20,
+        p=0.3),
 ]
 
 train_pipeline = [
@@ -24,7 +35,7 @@ train_pipeline = [
         transforms=albu_train_transforms,
         bbox_params=dict(
             type='BboxParams',
-            format='coco',
+            format='pascal_voc',
             label_fields=['gt_labels'],
             min_visibility=0.0,
             filter_lost_elements=True),

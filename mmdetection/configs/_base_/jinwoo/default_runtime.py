@@ -1,11 +1,11 @@
-checkpoint_config = dict(max_keep_ckpts=4, interval=4)
+checkpoint_config = dict(max_keep_ckpts=2, interval=12)
 # yapf:disable
 log_config = dict(
     interval=50,
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='WandbLoggerHook',
-            init_kwargs=dict(project='jinwoo', entity='carry-van', name='swin_k-fold3_rotate_scale[8,12]'))
+            init_kwargs=dict(project='jinwoo', entity='carry-van', name='swin_k-fold3_rotate_Hue_bright'))
         # dict(type='TensorboardLoggerHook')
     ])
 # yapf:enable
