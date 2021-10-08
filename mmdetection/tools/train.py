@@ -209,7 +209,7 @@ if __name__ == '__main__':
         'Authorization': 'Bearer ' + SLACK_BOT_TOKEN
     }
     payload = {
-        'channel' : '#level2-cv-p-11',
+        'channel' : '#carry-v-an-bot',
         'text': None
     }
     
