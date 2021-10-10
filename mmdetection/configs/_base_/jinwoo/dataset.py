@@ -1,8 +1,7 @@
-# dataset settings
 dataset_type = 'CocoDataset'
 data_root = '/opt/ml/detection/dataset/'
-CLASSES = ("General trash", "Paper", "Paper pack", "Metal", "Glass", 
-           "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")
+CLASSES = ('General trash', 'Paper', 'Paper pack', 'Metal', 'Glass', 'Plastic',
+           'Styrofoam', 'Plastic bag', 'Battery', 'Clothing')
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 albu_train_transforms = [
@@ -15,15 +14,21 @@ albu_train_transforms = [
         p=0.5),
     dict(
         type='RandomBrightnessContrast',
-        brightness_limit=[0.1, 0.3],
-        contrast_limit=[0.1, 0.3],
         p=0.5),
     dict(
-        type='HueSaturationValue',
-        hue_shift_limit=20,
-        sat_shift_limit=30,
-        val_shift_limit=20,
-        p=0.3),
+        type='OneOf',
+        transforms=[
+            dict(type='Blur', blur_limit=3, p=1.0),
+            dict(type='MedianBlur', blur_limit=3, p=1.0)
+        ],
+        p=0.3
+    ),
+     dict(
+        type='RGBShift',
+        r_shift_limit=10,
+        g_shift_limit=10,
+        b_shift_limit=10,
+        p=0.2)
 ]
 
 train_pipeline = [
@@ -52,6 +57,21 @@ train_pipeline = [
     dict(type='DefaultFormatBundle'),
     dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),
 ]
+val_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(
+        type='MultiScaleFlipAug',
+        img_scale=(1024, 1024),
+        flip=False,
+        transforms=[
+            dict(type='Resize', keep_ratio=True),
+            dict(type='RandomFlip'),
+            dict(type='Normalize', **img_norm_cfg),
+            dict(type='Pad', size_divisor=32),
+            dict(type='ImageToTensor', keys=['img']),
+            dict(type='Collect', keys=['img'])
+        ])
+]
 test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
@@ -73,7 +93,7 @@ data = dict(
     train=dict(
         classes= CLASSES,
         type=dataset_type,
-        ann_file=data_root + 'train_fold3.json',
+        ann_file=data_root + 'persudo25.json',
         img_prefix=data_root,
         pipeline=train_pipeline),
     val=dict(
