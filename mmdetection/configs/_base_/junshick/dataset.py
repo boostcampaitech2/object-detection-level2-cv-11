@@ -29,7 +29,10 @@ albu_train_transforms = [
         p=0.5
     ),
     dict(
-        type='CenterCrop',
+        type=''
+    ),
+    dict(
+        type='Random',
         height=768,
         width=768,
         p=0.2),
