@@ -1,15 +1,15 @@
-_base_=[
-    'cascade_rcnn_r50_fpn.py',
+_base_ = [
+    'my_model.py',
     'dataset.py',
-    'default_runtime.py',
-    'schedule_1x.py'
+    'schedule_1x.py',
+    'default_runtime.py'
 ]
-''''
+
 pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth'  # noqa
 model = dict(
     type='MaskRCNN',
     backbone=dict(
-        _delete_=True, #기본 resnet을 바꾸고 SwinTransformer을 사용하겠다는 뜻
+        _delete_=True,
         type='SwinTransformer',
         embed_dims=96,
         depths=[2, 2, 6, 2],
@@ -26,7 +26,4 @@ model = dict(
         with_cp=False,
         convert_weights=True,
         init_cfg=dict(type='Pretrained', checkpoint=pretrained)),
-    neck=dict(in_channels=[96, 192, 384, 768])#neck in_channels가 바뀌어져 있따.
-    #[246, 512, 1024, 2048]
-)
-'''
+    neck=dict(in_channels=[96, 192, 384, 768]))
