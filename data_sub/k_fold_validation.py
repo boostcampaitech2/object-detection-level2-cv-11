@@ -8,12 +8,12 @@ from copy import deepcopy
 from objdict import ObjDict
 SEED=1234
 
-def make_valid(num_split, fromdata="/opt/ml/detection/dataset/train.json",
-                tofolder='/opt/ml/detection/dataset/'):
+def make_valid(num_split, fromdata="/opt/ml/detection/dataset/refined_train.json",
+                tofolder='/opt/ml/detection/dataset/refined_kfold'):
 
     file_data = OrderedDict()
-    file_data['info']=OrderedDict()
-    file_data['licenses']=[]
+    #file_data['info']=OrderedDict()
+    #file_data['licenses']=[]
     file_data['images']=[]
     file_data['categories']=[]
     file_data['annotations']=[]
@@ -24,8 +24,8 @@ def make_valid(num_split, fromdata="/opt/ml/detection/dataset/train.json",
         json_data = json.load(f)
 
 
-    file_data['info'] = json_data['info']
-    file_data['licenses'] = json_data['licenses']
+    #file_data['info'] = json_data['info']
+    #file_data['licenses'] = json_data['licenses']
     file_data['categories'] = json_data['categories']
 
     val_data=deepcopy(file_data)
@@ -97,7 +97,8 @@ def make_valid(num_split, fromdata="/opt/ml/detection/dataset/train.json",
         
         train_ids = train['image_id'].drop_duplicates().values
         valid_ids = valid['image_id'].drop_duplicates().values  
-
+        print('train_idx', train_idx)
+        print('------------------split-------------------')
         for t in train_ids:
             t=int(t)
             file_data['images'].append(json_data['images'][t])
