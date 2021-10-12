@@ -13,6 +13,11 @@ albu_train_transforms = [
         interpolation=1,
         p=0.5),
     dict(
+        type='RandomCrop',
+        width=450, 
+        height=450,
+        p=0.4),
+    dict(
         type='RandomBrightnessContrast',
         p=0.5),
     dict(
@@ -93,13 +98,13 @@ data = dict(
     train=dict(
         classes= CLASSES,
         type=dataset_type,
-        ann_file=data_root + 'persudo25.json',
+        ann_file=data_root + 'persudo19.json',
         img_prefix=data_root,
         pipeline=train_pipeline),
     val=dict(
         classes= CLASSES,
         type=dataset_type,
-        ann_file=data_root + 'val_fold3.json',
+        ann_file=data_root + 'val_fold4.json',
         img_prefix=data_root,
         pipeline=test_pipeline),
     test=dict(
@@ -108,4 +113,4 @@ data = dict(
         ann_file=data_root + 'test.json',
         img_prefix=data_root,
         pipeline=test_pipeline))
-evaluation = dict(interval=4, metric='bbox', save_best='bbox_mAP_50')
+# evaluation = dict(interval=4, metric='bbox', save_best='bbox_mAP_50')
