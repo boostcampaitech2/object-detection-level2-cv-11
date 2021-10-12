@@ -22,16 +22,16 @@ model = dict(
         feat_channels=256,
         anchor_generator=dict(
             type='AnchorGenerator',
-            scales=[4,6,8],
-            ratios=[0.55, 1.1, 2.2],
+            scales=[8],
+            ratios=[0.5, 1.0, 2.0],
             strides=[4, 8, 16, 32, 64]),
         bbox_coder=dict(
             type='DeltaXYWHBBoxCoder',
             target_means=[.0, .0, .0, .0],
             target_stds=[1.0, 1.0, 1.0, 1.0]),
         loss_cls=dict(
-            type='CrossEntropyLoss', use_sigmoid=True, loss_weight=1.0), #시간되면 Focal Loss
-        loss_bbox=dict(type='L1Loss', loss_weight=1.0)), #시간되면 SMOOTH L1 loss
+            type='CrossEntropyLoss', use_sigmoid=True, loss_weight=1.0),
+        loss_bbox=dict(type='L1Loss', loss_weight=1.0)),
     roi_head=dict(
         type='StandardRoIHead',
         bbox_roi_extractor=dict(
@@ -100,7 +100,7 @@ model = dict(
             nms=dict(type='nms', iou_threshold=0.7),
             min_bbox_size=0),
         rcnn=dict(
-            score_thr=0.0001,
+            score_thr=0.05,
             nms=dict(type='nms', iou_threshold=0.5),
             max_per_img=100)
         # soft-nms is also supported for rcnn testing

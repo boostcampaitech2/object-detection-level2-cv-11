@@ -12,18 +12,12 @@ albu_train_transforms = [
         scale_limit=0.0,
         rotate_limit=0,
         interpolation=1,
-        p=0.3),
+        p=0.5),
     dict(
         type='RandomBrightnessContrast',
         brightness_limit=[0.1, 0.3],
         contrast_limit=[0.1, 0.3],
-        p=0.5),
-    dict(
-        type='CenterCrop',
-        height=768,
-        width=768,
-        p=0.2),
-    
+        p=0.5),  
     dict(
         type='RandomRotate90',
         p=0.5),
@@ -34,6 +28,11 @@ albu_train_transforms = [
         val_shift_limit=20,
         p=0.5
     ),
+    dict(
+        type='CenterCrop',
+        height=768,
+        width=768,
+        p=0.2),
     dict(
         type='OneOf',
         transforms=[
@@ -50,7 +49,7 @@ train_pipeline = [ #어떤 pipline을 거쳐서
     dict(type='LoadAnnotations', with_bbox=True),#annotation 불러옴
     dict(type='Resize', img_scale=(1024, 1024), keep_ratio=True), 
     dict(type='CutOut', 
-    n_holes=13,
+    n_holes=12,
     cutout_shape=[(4, 4), (4, 8), (8, 4),
                        (8, 8), (16, 8), (8, 16),
                        (16, 16), (16, 32), (32, 16), (32, 32)]
@@ -94,8 +93,8 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=4,#gpu당 batch size
-    workers_per_gpu=2,
+    samples_per_gpu=8,#gpu당 batch size
+    workers_per_gpu=4,
     train=dict(
         type=dataset_type,
         ann_file=data_root + 'mosaic_train.json',
