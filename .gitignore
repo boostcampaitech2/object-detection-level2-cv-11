@@ -6,3 +6,5 @@ faster_rcnn/
 .wandb
 ensemble/
 models/
+mmdetection/wandb
+mmdetection/nohup.out

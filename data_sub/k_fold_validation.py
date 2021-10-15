@@ -35,7 +35,7 @@ def make_valid(num_split, fromdata="/opt/ml/detection/dataset/refined_train.json
     for j,i in enumerate(json_data['annotations']):
         new=[(j,i['image_id'],i['category_id'])]
         dfnew=pd.DataFrame(new,columns=['id','image_id','category_id'])
-        df=df.append(dfnew,ignore_index=True)
+        df=df.append(dfnew, ignore_index=True)
 
     def stratified_group_k_fold(X, y, groups, k, seed=None):
         labels_num = np.max(y) + 1
@@ -81,7 +81,7 @@ def make_valid(num_split, fromdata="/opt/ml/detection/dataset/refined_train.json
 
             yield train_indices, test_indices
 
-    groups=df.image_id.values
+    groups = df.image_id.values
     labels = df.category_id.values
     splits = list(stratified_group_k_fold(df,labels,groups,k=num_split,seed=SEED))
 

@@ -59,7 +59,7 @@ def main(args):
             
         prediction_strings.append(prediction_string)
         file_names.append(image_info['file_name'])
-
+    
 
     submission = pd.DataFrame()
     submission['PredictionString'] = prediction_strings
