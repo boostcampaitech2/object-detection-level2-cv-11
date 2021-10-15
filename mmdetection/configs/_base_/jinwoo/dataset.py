@@ -113,4 +113,4 @@ data = dict(
         ann_file=data_root + 'test.json',
         img_prefix=data_root,
         pipeline=test_pipeline))
-# evaluation = dict(interval=4, metric='bbox', save_best='bbox_mAP_50')
+evaluation = dict(interval=60, metric='bbox', save_best='bbox_mAP_50')

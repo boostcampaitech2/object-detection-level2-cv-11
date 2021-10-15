@@ -10,9 +10,12 @@ def main(args):
     ensemble_list = sorted(ensemble_list, reverse=True)
     models = [pd.read_csv(os.path.join(model_path, _)) for _ in ensemble_list]
     print(ensemble_list)
+
+    # model 개수와 weight 개수가 맞지 않을 경우
     if args.weights != None and len(args.weights) != len(models):
         raise NameError('not match number of model and weights')
     
+    # 각 model들의 이미지 마다 예측 값을 담기 위한 list 선언
     boxes_list = [[[] for i in range(len(models))] for _ in range(4871)]
     scores_list = [[[] for i in range(len(models))] for _ in range(4871)]
     labels_list = [[[] for i in range(len(models))] for _ in range(4871)]
@@ -57,8 +60,8 @@ def main(args):
     print("success to ensemble each model")
 
     print("make csv file...")
-    predictionstring = []
-    file_names = []
+    predictionstring = []   # 이미지 마다 예측 score, bbox 값 저장
+    file_names = []         # 이미지 파일명 저장
     for img_predict in range(len(boxes_list)):
         file_names.append(models[0]['image_id'][img_predict])
         prediction_string = ''
@@ -83,8 +86,7 @@ if __name__ == "__main__":
     parser.add_argument("--weights", type=eval, help='set weight of each models', default=None)
     parser.add_argument("--method", type=str, help='choose ensemble method [nms, snms, nmw, wbf]', default='wbf')
 
-    args = parser.parse_args()
-    
+    args = parser.parse_args() 
     if args.method not in ['nms', 'snms', 'nmw', 'wbf']:
         raise NameError('no match any methods')
     main(args)
