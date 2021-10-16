@@ -1,12 +1,12 @@
 # <div align='center'>Architercture<div>
 
-[mmdetection framework](https://github.com/open-mmlab/mmdetection)
+`./mmdetection` : [mmdetection framework](https://github.com/open-mmlab/mmdetection)
 
-[YOLOv5 framework](https://github.com/ultralytics/yolov5)
+`./yolov5` : [YOLOv5 framework](https://github.com/ultralytics/yolov5)
 
-[Detectron](https://github.com/facebookresearch/Detectron)
+`./detectron2` : [Detectron framework](https://github.com/facebookresearch/Detectron)
 
-data_sub: self made data utils
+`./data_sub` : self made data utils
 
 # <div align='center'>Data Preperation<div>
 
