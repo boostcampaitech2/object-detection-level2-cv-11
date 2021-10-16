@@ -1,4 +1,4 @@
-# <div align='center'>Architercture<div>
+# <div align='center'>Architecture<div>
 
 `./mmdetection` : [mmdetection framework](https://github.com/open-mmlab/mmdetection)
 
@@ -6,7 +6,7 @@
 
 `./detectron2` : [Detectron framework](https://github.com/facebookresearch/Detectron)
 
-`./data_sub` : self made data utils
+`./data_sub` : self-made utils
 
 # <div align='center'>Data Preperation<div>
 
