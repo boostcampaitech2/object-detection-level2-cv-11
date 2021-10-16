@@ -1,10 +1,10 @@
 # <div align='center'>Architercture<div>
 
-mmdetection framework(https://github.com/open-mmlab/mmdetection)
+[mmdetection framework](https://github.com/open-mmlab/mmdetection)
 
-YOLOv5 framework(https://github.com/ultralytics/yolov5)
+[YOLOv5 framework](https://github.com/ultralytics/yolov5)
 
-Detectron(https://github.com/facebookresearch/Detectron)
+[Detectron](https://github.com/facebookresearch/Detectron)
 
 data_sub: self made data utils
 
@@ -18,8 +18,9 @@ $ wget https://aistages-prod-server-public.s3.amazonaws.com/app/Competitions/000
 # <div align='center'>Quick Start<div>
 
 ### Training 
+<details open>
+<summary> mmdetection </summary>
 
-#### mmdetection
 - 경로 : `opt/ml/detection/mmdetection`
 1. 원하는 모델과 파라마티, 하이퍼 파라미터 config 세팅
 2. `work_dir`을 지정, wandb project name, entity 설정
@@ -29,9 +30,14 @@ $ wget https://aistages-prod-server-public.s3.amazonaws.com/app/Competitions/000
 $ python tools/train.py [config_dir]
 ```
 
-#### YOLOv5
+</details>
+
+<details open>
+<summary> YOLOv5 </summary>
+
 - 경로 : `opt/ml/detection/yolov5`
- YOLOv5 format에 맞는 데이터 필요 
+
+YOLOv5 format에 맞는 데이터 필요 
 
 ```bash
 $ python train.py --data coco.yaml --cfg yolov5s.yaml --weights '' --batch-size 64
@@ -40,9 +46,13 @@ $ python train.py --data coco.yaml --cfg yolov5s.yaml --weights '' --batch-size 
                                          yolov5x                                16
 ```
 
+</details>
+
 ### Inference
 
-#### mmdetection
+<details open>
+<summary> mmdetection </summary>
+
 - 경로: `opt/ml/detection/mmdetection`
 1. `--config_dir` Inference할 config 선택
 2. `--epoch` Inference할 저장되어있는 ,pth파일 선택
@@ -51,12 +61,19 @@ $ python train.py --data coco.yaml --cfg yolov5s.yaml --weights '' --batch-size 
 $ python inference.py --config_dir[config_dir] --epoch [pth file name]
 ```
 
-#### YOLOv5
+</details>
+
+<details open>
+<summary> YOLOv5 </summary>
+
 - 경로 `opt/ml/detection/yolov5`
 
 ```bash
 $ python inference.py --label_dir {label_path} 
 ```
+
+</details>
+
 ### pseudo
 > 
 - `--pre` : 기존 json파일
