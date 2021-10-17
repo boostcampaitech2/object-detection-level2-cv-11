@@ -4,8 +4,6 @@
 
 `./yolov5` : [YOLOv5 framework](https://github.com/ultralytics/yolov5)
 
-`./detectron2` : [Detectron framework](https://github.com/facebookresearch/Detectron)
-
 `./data_sub` : self-made utils
 
 # <div align='center'>Data Preperation<div>
@@ -97,3 +95,8 @@ $ python makej.py --csv [csv_file] --output [output_file_name]
 ```bash
 $ python /data_sub/ensemble.py --model_dir [model_dir] --weights [weights:list] --save_dir [save_dir] --method wbf
 ```
+  
+  
+# <div align='center'>Reference<div>
+- https://www.kaggle.com/jakubwasikowski/stratified-group-k-fold-cross-validation
+- https://www.kaggle.com/iru538/stratified-group-k-fold
